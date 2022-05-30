@@ -1,6 +1,7 @@
 const ErrorResponse = require("../util/errorResponse");
 const asyncHandler = require("../util/asyncHandler");
 const ServiceRequests = require("../modules/serviceRequests");
+const mailSender = require('../util/nodemailer');
 
 exports.postServiceRequests = asyncHandler(async (req, res, next) => {
   const serviceRequests = await ServiceRequests.create(req.body);
