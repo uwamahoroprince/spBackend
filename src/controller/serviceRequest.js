@@ -4,6 +4,7 @@ const ServiceRequests = require("../modules/serviceRequests");
 
 exports.postServiceRequests = asyncHandler(async (req, res, next) => {
   const serviceRequests = await ServiceRequests.create(req.body);
+  await mailSender(serviceRequests);
   if (!serviceRequests) {
     return next(new ErrorResponse("could not save new serviceRequests", 400));
   }
